@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary" class="toolbar-container">
+    <ion-title class="ion-text-center">Meus Filmes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-container">
+  <!-- Animação do pacote de pipoca -->
+  <div class="animation-container">
+    <img src="../../../assets/icon/pacote-pipoca.png" alt="Pacote de Pipoca" class="pacote-pipoca" />
+    <div  class="pipoca"></div>
+  </div>
+
+  <!-- Mensagem de boas-vindas -->
+  <div class="welcome-message">
+    <h6>Bem-vindo ao app de filmes  {{ nome }}!<p style="font-family: Verdana; color: rgb(131, 96, 196);size: 25px; font-style:oblique;"> {{ nomeUsuario }}</p></h6>
+    <ion-button routerLink="/adicionar-filmes" color="tertiary" (click)="adicionarFilmes()">Adicionar Filmes</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,20 @@
+{
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "@ionic/angular/common",
+    "@ionic/angular"
+  ],
+  "cSpell.words": [
+    "assistido",
+    "cadastrado",
+    "Cadastrados",
+    "descricao",
+    "estrelas",
+    "filme",
+    "filmes",
+    "genero",
+    "listar",
+    "mensagem",
+    "Nenhum",
+    "voltar"
+  ]
+}

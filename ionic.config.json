@@ -1,0 +1,13 @@
+{
+ "name": "dvbtec",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone",  
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://filmes.dvbtecnology.com/api"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+.toolbar {
+    padding: 18px;
+   
+  }
+  .animation-container {
+    position: relative;
+    width: 100%;
+    height: 400px; // Altura do container da animação
+    overflow: hidden;
+    display: flex;
+    justify-content: center; // Centraliza horizontalmente
+    align-items: center; // Centraliza verticalmente
+  }
+  
+  .pacote-pipoca {
+    position: absolute;
+    width: 200px; // Tamanho do pacote de pipoca
+    height: auto;
+    animation: moverPacote 3s ease-in-out forwards; // Animação do pacote
+  }
+  
+  @keyframes moverPacote {
+    0% {
+      transform: translateX(-100%); // Começa fora da tela à esquerda
+    }
+    50% {
+      transform: translateX(0); // Chega ao centro
+    }
+    100% {
+      transform: translateX(0); // Fica parado no centro
+    }
+  }
+  
+  .pipoca {
+    position: absolute;
+    width: 20px; // Tamanho de cada pipoca
+    height: 20px;
+    background-color: yellow;
+    border-radius: 50%;
+    animation: cairPipoca 2s ease-in infinite; // Animação de queda
+  }
+  
+  @keyframes cairPipoca {
+    0% {
+      transform: translateY(-100%); // Começa no topo
+    }
+    100% {
+      transform: translateY(100vh); // Cai até o final da tela
+    }
+  }
+
+  .content-container {
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Ocupa a tela toda */
+    text-align: center; /* Alinha o texto */
+  }
+  
+  .welcome-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    gap: 10px; /* Espaçamento entre os elementos */
+  }
+  
+  .welcome-message h6 {
+    color: blue;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  ion-button {
+    font-size: small;
+  }
+  .toolbar-container{
+    padding: 20px;
+  }

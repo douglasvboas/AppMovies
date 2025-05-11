@@ -1,0 +1,28 @@
+ion-header {
+    --background: #3880ff;
+  }
+  
+  ion-content {
+    padding: 20px;
+  }
+  
+  ion-item {
+    margin-bottom: 10px;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+  }
+  /* Garante que o placeholder seja visível */
+ion-input {
+  --placeholder-color: var(--ion-color-medium);
+  --placeholder-opacity: 1;
+}
+
+/* Estilo para o texto digitado */
+.input-text {
+  letter-spacing: 0.5px;
+}
+.toolbar-container{
+  padding: 20px;
+}

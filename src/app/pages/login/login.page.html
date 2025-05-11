@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary" class="toolbar-container">
+    <ion-title class="ion-text-center">Meus Filmes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form >
+          <ion-item>
+            <ion-label position="stacked">CPF</ion-label>
+            <ion-input [(ngModel)]="credentials.cpf" name="cpf" type="text" required #cpf="ngModel"></ion-input>
+          </ion-item>
+            <ion-note *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" color="danger">
+              CPF é obrigatório
+            </ion-note>
+         
+          <ion-item>
+            <ion-label position="stacked">Senha</ion-label>
+            <ion-input [(ngModel)]="credentials.senha" name="senha" type="password" required  #senha="ngModel"></ion-input>
+          </ion-item>
+             <ion-note *ngIf="senha.invalid && (senha.dirty || senha.touched)" color="danger">
+              Senha é obrigatória
+             </ion-note>     
+
+          <ion-button  expand="block"  (click)="login()">
+            Entrar
+          </ion-button>
+            <ion-note *ngIf="errorMessage" color="danger" class="error-message">
+             {{ errorMessage }}
+            </ion-note>
+        </form>
+
+        <ion-button fill="clear" expand="block" (click)="recuperarSenha()">
+          Cadastrar usuário
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

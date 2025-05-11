@@ -1,0 +1,114 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Meus Filmes</ion-list-header>
+          <ion-note>dvbtecnology.com</ion-note>
+
+    
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/home" routerDirection="root">
+              <ion-icon slot="start" name="home"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle> 
+                    
+          <!-- Menu de navegação -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/adicionar-filmes" routerDirection="root">
+              <ion-icon slot="start" name="add-circle"></ion-icon>
+              <ion-label>Adicionar Filmes</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/listar-filmes" routerDirection="root">
+              <ion-icon slot="start" name="list-circle"></ion-icon>
+              <ion-label>Listar Filmes</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/favoritos" routerDirection="root">
+              <ion-icon slot="start" name="star"></ion-icon>
+              <ion-label>Favoritos</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<ion-app >
+  <ion-split-pane contentId="main-content" >
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content class="tooblar">
+        <ion-list id="inbox-list">
+          <ion-list-header>Meus Filmes</ion-list-header>
+          <ion-note>dvbtecnology.com</ion-note>
+
+          @for (p of appPages; track p; let i = $index) {
+            <ion-menu-toggle auto-hide="false" >
+              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          }
+        </ion-list>
+        
+        <ion-list id="labels-list">
+          <div style="padding: 150px;"></div>
+          <div style="color: rgb(177, 197, 5); font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <h5 style="height: 14px; text-align: center;">dvbtecnology.com</h5>
+            <h6 style="height: 12px; text-align: center;">Todos os direitos reservados</h6>
+            <h6 style="height: 10px; text-align: center;">Tel: (11) 9.9526-5254</h6>
+          </div>
+
+        </ion-list>
+      </ion-content >
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app> -->

@@ -1,0 +1,9 @@
+.star-rating {
+    font-size: 24px;
+    color: #ccc; // Cor das estrelas não selecionadas
+    cursor: pointer;
+  
+    .filled {
+      color: #ffd700; // Cor das estrelas selecionadas
+    }
+  }

@@ -1,0 +1,21 @@
+.toolbar {
+    padding: 18px;
+}
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Espaçamento entre as estrelas */
+  
+    ion-icon {
+      font-size: 24px; /* Tamanho das estrelas */
+      cursor: pointer;
+      transition: color 0.2s ease;
+  
+      &:hover {
+        color: gold; /* Efeito ao passar o mouse */
+      }
+    }
+  }
+  .toolbar-container{
+    padding: 20px;
+  }

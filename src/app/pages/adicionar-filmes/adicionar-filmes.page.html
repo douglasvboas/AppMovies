@@ -1,0 +1,72 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary" class="toolbar-container">
+      <ion-title>Adicionar Filmes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar class="toolbar">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Adicionar Filmes</ion-title>
+    </ion-toolbar>
+    <div style="margin-top: 8px;"></div>
+
+    <ion-list [formGroup]="filmeForm"> <!-- Adicione [formGroup] aqui -->
+      <ion-item>
+        <ion-input style="font-size: 18px;" label="Nome:" labelPlacement="stacked" placeholder="" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input style="font-size: 18px;" label="Descrição:" labelPlacement="stacked" placeholder="" formControlName="descricao"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Gênero" label-placement="floating" formControlName="genero">
+          <ion-select-option value="acao">Ação</ion-select-option>
+          <ion-select-option value="comedia">Comédia</ion-select-option>
+          <ion-select-option value="suspense">Suspense</ion-select-option>
+          <ion-select-option value="terror">Terror</ion-select-option>
+          <ion-select-option value="outros">Outros</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Assistido?" label-placement="floating" formControlName="assistido">
+          <ion-select-option value="sim">Sim</ion-select-option>
+          <ion-select-option value="nao">Não</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Nota:" type="number" placeholder="00" formControlName="nota"></ion-input>
+      </ion-item>
+
+      <!-- Avaliação com Estrelas -->
+      <ion-item>
+        <ion-label>Estrelas</ion-label>
+        <div class="star-rating">
+          <ion-icon 
+            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" 
+            (click)="rate(i + 1)" 
+            [name]="(i + 1) <= filmeForm.value.estrelas ? 'star' : 'star-outline'" 
+            [style.color]="(i + 1) <= filmeForm.value.estrelas ? 'gold' : 'black'">
+          </ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div style="margin-top: 98px;"></div>
+    <ion-button expand="full" (click)="salvarFilme()">Salvar</ion-button>
+  </ion-header>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title style="text-align: center">dvbtecnology.com</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</div>
