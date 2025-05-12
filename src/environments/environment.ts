@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl:         'https://filmes.dvbtecnology.com',
   apiUrlbase:     'https://filmes.dvbtecnology.com/api',
   apiUrlLogin:    'https://filmes.dvbtecnology.com/api/login.php',
   apiUrlCadUsu:   'https://filmes.dvbtecnology.com/api/cadastrar-usuario.php',

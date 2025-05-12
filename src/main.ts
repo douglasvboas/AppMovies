@@ -7,7 +7,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient,withInterceptors, withInterceptors
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { Storage } from '@ionic/storage-angular';
-import { authInterceptor } from './app/interceptors/auth.interceptor';
+import { AuthInterceptor } from './app/interceptors/auth.interceptor';
 import { importProvidersFrom, provideAppInitializer } from '@angular/core';
 
 
@@ -24,12 +24,8 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     provideIonicAngular(),
     importProvidersFrom(),
-   provideHttpClient(
-      withInterceptors([authInterceptor])
-    ),
   provideHttpClient(withInterceptorsFromDi()),
-  { provide: HTTP_INTERCEPTORS, useValue: withInterceptors, multi: true },
-    provideAnimations(), 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     Storage 
   ]
 }).catch(err => console.error(err));

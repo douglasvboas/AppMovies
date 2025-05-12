@@ -7,7 +7,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "https://filmes.dvbtecnology.com/api"
+      "proxyUrl": "https://filmes.dvbtecnology.com"
     }
   ]
 }
