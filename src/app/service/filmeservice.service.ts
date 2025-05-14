@@ -17,6 +17,9 @@ export class FilmeService {
   constructor(private http: HttpClient) {} 
 
   salvarFilme(filme: Filme): Observable<any> {
+      const headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  });
     const apiUrlFilm = `${this.apiUrlCad.replace(/\/+$/, '')}`;
     console.log(filme);  
     return this.http.post<any>(this.apiUrlCad, filme).pipe(

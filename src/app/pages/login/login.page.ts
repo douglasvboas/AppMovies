@@ -7,8 +7,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -25,14 +23,15 @@ import { IonicModule } from '@ionic/angular';
 })
 export class LoginPage {
   credentials = {cpf: '', senha: ''};
-  private authService = inject(AuthService);
   isLoading = false;
   errorMessage: any;
-
+  
   constructor(
+    //private authSe rvice = inject(AuthService);
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
   ) {}
   
 async login() {

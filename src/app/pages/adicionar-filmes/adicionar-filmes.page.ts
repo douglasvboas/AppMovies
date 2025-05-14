@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; 
@@ -6,6 +5,7 @@ import { IonHeader, IonTitle, IonToolbar, IonMenu, IonMenuButton, IonButtons, Io
   IonItem, IonInput, IonSelect, IonSelectOption, IonLabel, IonButton, IonIcon, IonList} from '@ionic/angular/standalone';
 import { FilmeService } from '../../service/filmeservice.service'; 
 import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/service/auth.service';
 
 
 @Component({
@@ -24,7 +24,8 @@ export class AdicionarFilmesPage  {
   constructor(
     private formBuilder: FormBuilder,
     private filmeService: FilmeService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService
   ) {
     this.filmeForm = this.formBuilder.group({
       nome:      ['', Validators.required],
@@ -41,7 +42,46 @@ export class AdicionarFilmesPage  {
     this.filmeForm.patchValue({ estrelas: stars });
   }
 
+
   async salvarFilme() {
+  if (this.filmeForm.valid) {
+    try {
+      // Obter ID do usuário corretamente
+      const usuario = await this.authService.getUsuario();
+      if (!usuario || !usuario.id_usuario) {
+        throw new Error('Usuário não autenticado');
+      }
+
+      // Preparar dados do filme
+      const filmeData = {
+        ...this.filmeForm.value,
+        id_usuario: usuario.id_usuario, // Número, não objeto
+        assistido: this.filmeForm.value.assistido ? 'sim' : 'não'
+      };
+
+      console.log('Dados enviados:', filmeData); 
+
+      this.filmeService.salvarFilme(filmeData).subscribe({
+        next: async (response) => {
+          if (response.success) {
+           
+          }
+        },
+        error: async (err) => {
+          console.error('Erro completo:', err);
+          await this.mostrarErro(err.error?.message || 'Erro desconhecido');
+        }
+      });
+    } catch (error) {
+      console.error('Erro ao obter usuário:', error);
+      await this.mostrarErro('Faça login antes de cadastrar filmes');
+    }
+  }
+}
+  mostrarErro(arg0: any) {
+    throw new Error('error.');
+  }
+  /*async salvarFilme() {
     if (this.filmeForm.valid) {
       const filme = this.filmeForm.value;
       
@@ -88,11 +128,19 @@ export class AdicionarFilmesPage  {
       });
       await alert.present();
     }
-  }
+  }*/
 
-  obterIdUsuario(): number {
+  /*obterIdUsuario(): number {
     const idUsuario = localStorage.getItem('idUsuario'); 
     return idUsuario ? parseInt(idUsuario) : 1;  
+  }*/
+
+  async obterIdUsuario(): Promise<number> {
+  const usuario = await this.authService.getUsuario(); 
+  if (!usuario) {
+    throw new Error('Usuário não autenticado!');
   }
+  return usuario.id_usuario; 
+}
   
 }

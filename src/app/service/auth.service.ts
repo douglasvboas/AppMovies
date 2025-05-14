@@ -18,19 +18,28 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private storage: Storage
-  ) {}
+  ) {
 
-  async login(credentials: { cpf: string, senha: string }) {
+    this.initStorage();
+  }
+
+    async initStorage() {
+    await this.storage.create();
+  }
+
+    async login(credentials: { cpf: string, senha: string }): Promise<boolean> {
     try {
       const response: any = await firstValueFrom(
         this.http.post(this.apiUrlbase, credentials)
       );
 
-      if (response && response.token && response.usuario) {
-        // Armazena todos os dados de autenticação
+      if (response && response.success && response.token) {
         await this.storage.set(this.storageKey, {
           token: response.token,
-          usuario: response.usuario
+          usuario: {
+            id_usuario: response.id_usuario,
+            nome: response.nome
+          }
         });
         return true;
       }
@@ -60,6 +69,10 @@ export class AuthService {
     const token = await this.getToken();
     return !!token;
   }
+  async getUsuarioLogado() {
+  const authData = await this.storage.get('authData');
+  return authData?.usuario; 
+}
 
     cadastrarUsuario(usuario: any): Observable<any> {
     console.log('Cadastrando usuário:', usuario);

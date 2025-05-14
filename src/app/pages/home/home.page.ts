@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/service/auth.service';
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePage implements OnInit {
-  nomeUsuario: string = '';
+  nomeUsuario: string = 'Usuario';
   
 
   constructor(
@@ -23,8 +23,14 @@ export class HomePage implements OnInit {
    private authService: AuthService
   
   ) {}
-
+  
 async ngOnInit() {
+    const usuario = await this.authService.getUsuario();
+    if (usuario) {
+      this.nomeUsuario = usuario.nome || 'Usuário';
+    }
+  }
+/*async ngOnInit() {
   try {
     this.nomeUsuario = await this.storageService.get('nome') ?? 'Usuário';
     console.log('Nome carregado na Home:', this.nomeUsuario);
@@ -32,7 +38,7 @@ async ngOnInit() {
     console.error('Erro ao recuperar nome:', error);
     this.nomeUsuario = 'Usuário';
   }
-}
+}*/
  async ionViewWillEnter() {
     const usuario = await this.authService.getUsuario();
     this.nomeUsuario = usuario?.nome ?? 'Usuário';

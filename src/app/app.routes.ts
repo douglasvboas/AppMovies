@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthService } from './service/auth.service';
+import { AuthGuard } from './pages/home/AuthGuard';
 
 export const routes: Routes = [
   {
@@ -13,7 +14,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./pages/home/home.page').then( m => m.HomePage),
+    loadComponent: () => import('./pages/home/home.page').then( m => m.HomePage),canActivate: [AuthGuard],
   },
   {
     path: 'adicionar-filmes',
