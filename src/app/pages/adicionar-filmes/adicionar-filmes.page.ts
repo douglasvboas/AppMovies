@@ -64,7 +64,15 @@ export class AdicionarFilmesPage  {
       this.filmeService.salvarFilme(filmeData).subscribe({
         next: async (response) => {
           if (response.success) {
-           
+            const alert = await this.alertController.create({
+               header: 'Sucesso',
+               message: 'Filme cadastrado com sucesso!',
+               buttons: ['OK']
+            });
+                await alert.present();
+                this.filmeForm.reset();
+
+                this.filmeForm.patchValue({estrelas: 0});
           }
         },
         error: async (err) => {
@@ -78,62 +86,15 @@ export class AdicionarFilmesPage  {
     }
   }
 }
-  mostrarErro(arg0: any) {
-    throw new Error('error.');
-  }
-  /*async salvarFilme() {
-    if (this.filmeForm.valid) {
-      const filme = this.filmeForm.value;
-      
-     
-      filme.id_usuario = this.obterIdUsuario();
-      
-      delete filme.id_filme;
-  
-      this.filmeService.salvarFilme(filme).subscribe(
-        async (response: any) => {
-          if (response.success) {
-            const id_usuario = this.obterIdUsuario();  
-              filme.id_usuario = id_usuario;
-            const alert = await this.alertController.create({
-              header: 'Sucesso',
-              message: 'Filme salvo com sucesso!',
-              buttons: ['OK']
-            });
-            await alert.present();
-            this.filmeForm.reset();
-          } else {
-            const alert = await this.alertController.create({
-              header: 'Erro',
-              message: response.message || 'Erro ao salvar o filme.',
-              buttons: ['OK']
-            });
-            await alert.present();
-          }
-        },
-        async (error: any) => {
-          const alert = await this.alertController.create({
-            header: 'Erro',
-            message: 'Ocorreu um erro ao salvar o filme.',
-            buttons: ['OK']
-          });
-          await alert.present();
-        }
-      );
-    } else {
-      const alert = await this.alertController.create({
-        header: 'Formulário Inválido',
-        message: 'Por favor, preencha todos os campos corretamente.',
-        buttons: ['OK']
-      });
-      await alert.present();
-    }
-  }*/
-
-  /*obterIdUsuario(): number {
-    const idUsuario = localStorage.getItem('idUsuario'); 
-    return idUsuario ? parseInt(idUsuario) : 1;  
-  }*/
+async mostrarErro(mensagem: string) {
+  const alert = await this.alertController.create({
+    header: 'Erro',
+    message: mensagem,
+    buttons: ['OK']
+  });
+  await alert.present();
+}
+ 
 
   async obterIdUsuario(): Promise<number> {
   const usuario = await this.authService.getUsuario(); 
