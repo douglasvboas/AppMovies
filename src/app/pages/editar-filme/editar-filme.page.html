@@ -1,17 +1,13 @@
-*
+
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="router.navigate(['/listar-filmes'])">
+     <!-- <ion-button (click)="router.navigate(['/listar-filmes'])">
         <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
+      </ion-button>-->
     </ion-buttons>
     <ion-title>Editar Filme</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="salvarEdicao()">
-        <ion-icon name="save"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+ 
   </ion-toolbar>
 </ion-header>
 
@@ -33,14 +29,14 @@
         <ion-select-option value="outros">Outros</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+   
       <ion-item>
         <ion-select label="Assistido" [(ngModel)]="filme.assistido" interface="popover">
           <ion-select-option value="sim">Assistido</ion-select-option>
           <ion-select-option value="nao">Não assistido</ion-select-option>
         </ion-select>
       </ion-item>
-    </ion-item>
+   
     <ion-item>
       <ion-input type="number" label="Nota (0-10)" [(ngModel)]="filme.nota" min="0" max="10"></ion-input>
     </ion-item>
@@ -52,3 +48,11 @@
     </ion-item>
   </ion-list>
 </ion-content>
+ 
+   <ion-button name="save" expand="full" (click)="salvarEdicao()">Salvar</ion-button>
+
+   <ion-footer>
+    <ion-toolbar>
+      <ion-title style="text-align: center">dvbtecnology.com</ion-title>
+    </ion-toolbar>
+  </ion-footer>

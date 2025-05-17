@@ -1,11 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary" class="toolbar-container">
     <ion-title>Lista de Filmes</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="cadastrarfilme()">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  
   </ion-toolbar>
 
   <!-- Barra de pesquisa -->
@@ -64,15 +60,21 @@
         </ion-label>
       </ion-item>
 
-      <!-- Opções de slide para editar/excluir -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary" (click)="editarFilme(filme)">
-          <ion-icon slot="icon-only" name="create"></ion-icon>
-        </ion-item-option>
-        <ion-item-option color="danger" (click)="excluirFilme(filme)">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
+      <!-- Opções ao arrastar excluir ou editar -->
+<ion-item-options side="end">
+  <ion-item-option color="primary" (click)="editarFilme(filme)">
+    <div class="opcao-botao">
+      <ion-icon name="create-outline"></ion-icon>
+      <span>Editar</span>
+    </div>
+  </ion-item-option>
+  <ion-item-option color="danger" (click)="excluirFilme(filme)">
+    <div class="opcao-botao">
+      <ion-icon name="trash-outline"></ion-icon>
+      <span>Excluir</span>
+    </div>
+  </ion-item-option>
+</ion-item-options>
     </ion-item-sliding>
   </ion-list>
 
@@ -89,3 +91,9 @@
     <p>Nenhum filme encontrado para "{{termoPesquisa}}"</p>
   </div>
 </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title style="text-align: center">dvbtecnology.com</ion-title>
+    </ion-toolbar>
+  </ion-footer>

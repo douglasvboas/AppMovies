@@ -5,7 +5,8 @@ import { IonButtons, IonButton, IonIcon, IonList, IonItem, IonInput,
   IonTextarea, IonSelect, IonSelectOption, IonRange, IonBadge } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Filme, ListarFilmesService } from 'src/app/service/listarFilmes.service';
+import { FilmeService } from 'src/app/service/filme.service';
+import { Filme } from 'src/app/interfaces/filme.interface';
 
 
 @Component({
@@ -13,8 +14,9 @@ import { Filme, ListarFilmesService } from 'src/app/service/listarFilmes.service
   templateUrl: './editar-filme.page.html',
   styleUrls: ['./editar-filme.page.scss'],
   standalone: true,
-  imports: [IonButtons, IonButton, IonIcon, IonList, IonItem, IonInput, IonTextarea, IonSelect, 
-    IonSelectOption, IonRange, IonicModule,  CommonModule, FormsModule ]})
+ imports: [
+  IonicModule, CommonModule, FormsModule
+]})
 
 export class EditarFilmePage  {
 
@@ -32,7 +34,7 @@ export class EditarFilmePage  {
   constructor(
     private route: ActivatedRoute,
     public router: Router,
-    private filmesService: ListarFilmesService
+    private filmesService: FilmeService
   ) {}
 
   ionViewWillEnter() {
@@ -59,7 +61,7 @@ export class EditarFilmePage  {
     }
     this.filmesService.atualizarFilme(this.filme).subscribe(
       () => this.router.navigate(['/listar-filmes']),
-      erro => alert('Erro ao atualizar filme: ' + erro.message)
+      (erro: { message: string; }) => alert('Erro ao atualizar filme: ' + erro.message)
     );
   }
   

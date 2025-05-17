@@ -41,6 +41,11 @@ export class AuthService {
             nome: response.nome
           }
         });
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('usuarioLogado', JSON.stringify({
+            id_usuario: response.id_usuario,
+            nome: response.nome
+        }));
         return true;
       }
       return false;
@@ -66,9 +71,15 @@ export class AuthService {
   }
 
   async isAuthenticated(): Promise<boolean> {
+  const token = await this.getToken();
+  const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+  return !!token && !!usuario.id_usuario;
+}
+
+  /*async isAuthenticated(): Promise<boolean> {
     const token = await this.getToken();
     return !!token;
-  }
+  }*/
   async getUsuarioLogado() {
   const authData = await this.storage.get('authData');
   return authData?.usuario; 

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; 
 import { IonHeader, IonTitle, IonToolbar, IonMenu, IonMenuButton, IonButtons, IonFooter,
   IonItem, IonInput, IonSelect, IonSelectOption, IonLabel, IonButton, IonIcon, IonList} from '@ionic/angular/standalone';
-import { FilmeService } from '../../service/filmeservice.service'; 
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/service/auth.service';
+import { FilmeService } from 'src/app/service/filme.service';
 
 
 @Component({

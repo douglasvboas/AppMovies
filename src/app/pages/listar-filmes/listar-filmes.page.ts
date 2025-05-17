@@ -1,11 +1,11 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ListarFilmesService } from '../../service/listarFilmes.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular'; 
 import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
+import { FilmeService } from 'src/app/service/filme.service';
 
 interface Filme {
   id_filme: number;
@@ -36,17 +36,23 @@ export class ListarFilmesPage {
   
 
   constructor(
-    private filmesService: ListarFilmesService,
+    private filmesService: FilmeService,
     private alertCtrl: AlertController,
     private router: Router
   ) {
     this.obterIdUsuario();
   }
  
-
-  async ngOnInit() {
-    await this.carregarFilmes();
+    ionViewWillEnter() {
+    this.carregarFilmes();
   }
+
+  /*async ngOnInit() {
+     this.obterIdUsuario();
+    if (this.idUsuario) {
+    await this.carregarFilmes();
+    }
+  }*/
 
   async carregarFilmes() {
     this.carregando = true;
@@ -56,7 +62,7 @@ export class ListarFilmesPage {
       if (!token) throw new Error('Token não encontrado');
   
       const response = await lastValueFrom(
-        this.filmesService.listarFilmesUsuario() 
+         this.filmesService.listarFilmesUsuario(this.idUsuario)
       );
       
       this.filmes = response as Filme[]; 
@@ -165,15 +171,15 @@ export class ListarFilmesPage {
       
             if (!this.idUsuario) {
               console.error('Erro: ID do usuário inválido.');
-              this.router.navigate(['/login']);
+              this.router.navigate(['/home']);
             }
           } catch (error) {
             console.error('Erro ao processar JSON do usuário:', error);
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
           }
         } else {
           console.error('Usuário não encontrado no localStorage.');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home']);
         }
 }
 }
