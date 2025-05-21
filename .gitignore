@@ -68,3 +68,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+# Android build and cache folders (não versionar arquivos temporários)
+android/caches/
+android/daemon/
+android/wrapper/
+android/.gradle/
+android/.idea/
+android/build/
+android/local.properties
+android/*.iml
