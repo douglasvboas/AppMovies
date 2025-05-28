@@ -1,7 +1,7 @@
 {
-  "name": "app",
+  "name": "Movies",
   "version": "0.0.1",
-  "author": "Ionic App",
+  "author": "dvbtecnology",
   "homepage": "https://filmes.dvbtecnology.com/",
   "scripts": {
     "ng": "ng",
