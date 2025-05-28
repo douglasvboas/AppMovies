@@ -14,7 +14,7 @@ import { FilmeService } from 'src/app/service/filme.service';
   styleUrls: ['./adicionar-filmes.page.scss'],
   standalone: true,
   imports: [IonList, 
-    IonFooter, IonButtons, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule,
+     IonButtons, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule,
     IonItem, IonInput, IonSelect, IonSelectOption, IonLabel, IonButton, IonIcon, IonMenu, IonMenuButton
   ]
 })
