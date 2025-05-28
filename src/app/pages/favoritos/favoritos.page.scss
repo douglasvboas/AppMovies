@@ -1,0 +1,49 @@
+.toolbar {
+    padding: 18px;
+}
+.carregando {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    
+    ion-spinner {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  
+  .ranking-item {
+    margin-bottom: 8px;
+    border-left: 4px solid var(--ion-color-primary);
+    
+    &:first-child {
+      border-left-color: gold;
+    }
+    
+    &:nth-child(2) {
+      border-left-color: silver;
+    }
+    
+    &:nth-child(3) {
+      border-left-color: #cd7f32; 
+    }
+  }
+  
+  .info-filme {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  ion-chip {
+    ion-icon {
+      margin-right: 4px;
+    }
+  }
+  .toolbar-container{
+    padding: 20px;
+  }

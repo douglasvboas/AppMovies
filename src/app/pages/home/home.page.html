@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary" class="toolbar-container">
+    <ion-title class="ion-text-center">Meus Filmes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-container">
+
+  <!-- Animação 3D do pacote de pipoca -->
+  <div class="animation-container">
+    <img src="../../../assets/icon/pacote-pipoca-3d.png" 
+         alt="Pacote de Pipoca 3D" 
+         class="pacote-pipoca" 
+         (animationend)="explodirPipocas()" />
+    <div id="pipocas-container"></div>
+  </div>
+
+  <div class="welcome-message">
+    <h6>Bem-vindo ao app de filmes
+      <p style="font-family: Verdana; color: rgb(131, 96, 196); font-style: oblique;">
+        {{ nomeUsuario }}
+      </p>
+    </h6>
+    <ion-button routerLink="/adicionar-filmes" color="tertiary" (click)="adicionarFilmes()">
+      Adicionar Filmes
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title style="text-align: center">dvbtecnology.com</ion-title>
+  </ion-toolbar>
+</ion-footer>

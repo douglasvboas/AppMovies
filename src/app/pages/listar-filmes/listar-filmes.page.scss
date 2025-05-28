@@ -1,0 +1,112 @@
+.toolbar {
+    padding: 18px;
+  }
+
+  ion-rating {
+    --star-size: 24px;
+    --star-color: #ffd700; /* Cor das estrelas */
+  }
+  .carregando {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    
+    ion-spinner {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  
+  .erro-message {
+    text-align: center;
+    padding: 20px;
+    color: var(--ion-color-danger);
+  }
+  
+  .sem-filmes {
+    text-align: center;
+    padding: 20px;
+    color: var(--ion-color-medium);
+  }
+  
+  ion-list {
+    padding: 10px;
+  }
+  
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .toolbar-container{
+    padding: 20px;
+  }
+  ion-searchbar {
+    padding: 8px;
+  }
+  
+  ion-item-sliding {
+    margin-bottom: 8px;
+  }
+  
+  ion-item-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .info-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  .estrelas {
+    display: flex;
+  }
+  
+  ion-item-sliding {
+    margin-bottom: 8px;
+  }
+  
+  ion-item-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sem-filmes {
+    text-align: center;
+    padding: 20px;
+    
+    ion-icon {
+      font-size: 48px;
+      color: var(--ion-color-medium);
+    }
+    
+    p {
+      margin: 10px 0;
+    }
+  }
+  
+.opcao-botao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+
+  ion-icon {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+}
+

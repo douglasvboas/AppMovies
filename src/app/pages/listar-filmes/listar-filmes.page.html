@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary" class="toolbar-container">
+    <ion-title>Lista de Filmes</ion-title>
+  
+  </ion-toolbar>
+
+  <!-- Barra de pesquisa -->
+  <ion-toolbar>
+    <ion-searchbar 
+      [(ngModel)]="termoPesquisa" 
+      (ionInput)="filtrarFilmes()" 
+      placeholder="Pesquisar filmes...">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Estado de carregamento -->
+  <div *ngIf="carregando" class="carregando">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando seus filmes...</p>
+  </div>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="erro && !carregando" class="erro">
+    <ion-icon name="warning-outline"></ion-icon>
+    <p>{{ erro }}</p>
+    <ion-button (click)="carregarFilmes()">Tentar Novamente</ion-button>
+  </div>
+
+  <!-- Lista de filmes -->
+  <ion-list *ngIf="!carregando && !erro && (filmesFiltrados.length > 0 || termoPesquisa)">
+    <ion-item-sliding *ngFor="let filme of filmesFiltrados.length > 0 ? filmesFiltrados : filmes">
+      <ion-item>
+        <ion-label>
+          <h2>{{ filme.nome }}</h2>
+          <p>{{ filme.descricao }}</p>
+          
+          <div class="info-container">
+            <ion-chip [color]="getGeneroColor(filme.genero)">
+              <ion-label>{{ filme.genero }}</ion-label>
+            </ion-chip>
+            
+            <ion-badge color="warning" *ngIf="filme.nota">
+              {{ filme.nota }}
+            </ion-badge>
+            
+            <ion-badge [color]="filme.assistido === 'sim' ? 'success' : 'danger'">
+              {{ filme.assistido === 'sim' ? 'Assistido' : 'Não assistido' }}
+            </ion-badge>
+            
+            <div class="estrelas" *ngIf="filme.estrelas">
+              <ion-icon 
+                *ngFor="let estrela of [].constructor(filme.estrelas); let i = index" 
+                name="star" 
+                color="warning">
+              </ion-icon>
+            </div>
+          </div>
+        </ion-label>
+      </ion-item>
+
+      <!-- Opções ao arrastar excluir ou editar -->
+<ion-item-options side="end">
+  <ion-item-option color="primary" (click)="editarFilme(filme)">
+    <div class="opcao-botao">
+      <ion-icon name="create-outline"></ion-icon>
+      <span>Editar</span>
+    </div>
+  </ion-item-option>
+  <ion-item-option color="danger" (click)="excluirFilme(filme)">
+    <div class="opcao-botao">
+      <ion-icon name="trash-outline"></ion-icon>
+      <span>Excluir</span>
+    </div>
+  </ion-item-option>
+</ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Mensagem quando não há filmes -->
+  <div *ngIf="!carregando && !erro && filmes.length === 0" class="sem-filmes">
+    <ion-icon name="film-outline"></ion-icon>
+    <p>Nenhum filme cadastrado ainda</p>
+    <ion-button (click)="cadastrarfilme()">Adicionar Filme</ion-button>
+  </div>
+
+  <!-- Mensagem quando a pesquisa não encontra resultados -->
+  <div *ngIf="!carregando && !erro && filmes.length > 0 && filmesFiltrados.length === 0 && termoPesquisa" class="sem-filmes">
+    <ion-icon name="search-outline"></ion-icon>
+    <p>Nenhum filme encontrado para "{{termoPesquisa}}"</p>
+  </div>
+</ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title style="text-align: center">dvbtecnology.com</ion-title>
+    </ion-toolbar>
+  </ion-footer>
