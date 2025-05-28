@@ -22,10 +22,18 @@ export class AppComponent {
     { title: 'Favoritos', url: '/favoritos', icon: 'star' },
   ];
   public labels = [];
+  platform: any;
+  statusBar: any;
   
   constructor( ) {
    
     addIcons({ accessibilitySharp, addCircleSharp, createSharp, starSharp, homeSharp, listSharp, personAddSharp });
   }
+  initializeApp() {
+  console.log('App initialized!'); 
+  this.platform.ready().then(() => {
+    this.statusBar.styleDefault();
+  });
+}
  
 }

@@ -15,7 +15,7 @@
         <form >
           <ion-item>
             <ion-label position="stacked">CPF</ion-label>
-            <ion-input [(ngModel)]="credentials.cpf" name="cpf" type="text" required #cpf="ngModel"></ion-input>
+            <ion-input [(ngModel)]="credentials.cpf" name="cpf" type="text" required #cpf="ngModel" placeholder="4 números do Cpf"></ion-input>
           </ion-item>
             <ion-note *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" color="danger">
               CPF é obrigatório
@@ -23,7 +23,7 @@
          
           <ion-item>
             <ion-label position="stacked">Senha</ion-label>
-            <ion-input [(ngModel)]="credentials.senha" name="senha" type="password" required  #senha="ngModel"></ion-input>
+            <ion-input [(ngModel)]="credentials.senha" name="senha" type="password" required  #senha="ngModel" placeholder="senha"></ion-input>
           </ion-item>
              <ion-note *ngIf="senha.invalid && (senha.dirty || senha.touched)" color="danger">
               Senha é obrigatória
